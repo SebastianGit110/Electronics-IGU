@@ -1,16 +1,22 @@
 package igu;
 
+import java.util.ArrayList;
 import logica.LogicHash;
 
 public class Crear extends javax.swing.JFrame {
-    LogicHash claseHash;
+    public ArrayList<LogicHash> listaCrear;
+    LogicHash objeto;
     
     public Crear() {
-        claseHash = new LogicHash();
         initComponents();
+        listaCrear = new ArrayList();
+    }
+    
+    public Crear(ArrayList<LogicHash> listaElectronicos) {
+        initComponents();
+        listaCrear = listaElectronicos;
     }
 
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -25,6 +31,7 @@ public class Crear extends javax.swing.JFrame {
         txtColor = new javax.swing.JTextField();
         txtCantidad = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -80,6 +87,15 @@ public class Crear extends javax.swing.JFrame {
             }
         });
 
+        btnLimpiar.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        btnLimpiar.setForeground(new java.awt.Color(0, 51, 153));
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -100,6 +116,8 @@ public class Crear extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLimpiar)
+                        .addGap(33, 33, 33)
                         .addComponent(btnGuardar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(55, 55, 55)
@@ -139,7 +157,11 @@ public class Crear extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnGuardar)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnGuardar)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(1, 1, 1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -169,15 +191,9 @@ public class Crear extends javax.swing.JFrame {
         String cantidadd = txtCantidad.getText();
         int cantidad = Integer.parseInt(cantidadd);
         
-        claseHash.crear(id,nombre,color,cantidad);
-        
-        claseHash.leerId();
-        claseHash.leerNombre();
+        objeto = new LogicHash(id, nombre, color, cantidad);
+        listaCrear.add(objeto);
     }//GEN-LAST:event_btnGuardarActionPerformed
-    
-    public LogicHash getObjeto(){
-        return this.claseHash;
-    }
     
     private void txtIdentificadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdentificadorActionPerformed
         // TODO add your handling code here:
@@ -195,8 +211,16 @@ public class Crear extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCantidadActionPerformed
 
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        txtIdentificador.setText("");
+        txtNombre.setText("");
+        txtColor.setText("");
+        txtCantidad.setText("");
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnLimpiar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

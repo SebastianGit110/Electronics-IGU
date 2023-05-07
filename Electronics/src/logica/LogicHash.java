@@ -5,9 +5,6 @@ import java.util.Hashtable;
 import java.util.Scanner;
 
 public class LogicHash {
-    Scanner in = new Scanner(System.in);
-    
-    ArrayList<LogicHash> objetos = new ArrayList();
     public int id;
     public String nombre;
     public String color;
@@ -23,28 +20,6 @@ public class LogicHash {
         this.cantidad = cantidad;
     }
     
-    //Metodos
-    public void crear(int id, String nombre, String color, int cantidad ){
-        objetos.add(new LogicHash(id,nombre,color,cantidad));
-    }
-
-    public ArrayList<LogicHash> getObjetos() {
-        return objetos;
-    }
-    
-    //Metodos que leen los atributos y retornan el dato
-    public void leerId(){
-        for(LogicHash elem : objetos){
-            System.out.println("Id " + elem.getId());
-        }
-    }
-    
-    public void leerNombre(){
-        for(LogicHash elem : objetos){
-            System.out.println("Nombre " + elem.getNombre());
-        }
-    }
-
     //Getters
     public int getId() {
         return id;
@@ -61,4 +36,29 @@ public class LogicHash {
     public int getCantidad() {
         return cantidad;
     }
+    
+    //Setters
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    @Override
+    public String toString() {
+        return "id = " + id + ", nombre = " + nombre + ", color = " + color + ", cantidad = " + cantidad;
+    }
+    
+    
+    
 }

@@ -1,9 +1,15 @@
 package igu;
 
+import java.util.ArrayList;
+import logica.LogicHash;
+
 public class PantallaPrincipal extends javax.swing.JFrame {
 
+    public ArrayList<LogicHash> listaElectronicos; //Se crear la lista principal para despues pasarla por argumento a las demas clases y poder modificarla
+    
     public PantallaPrincipal() {
         initComponents();
+        listaElectronicos = new ArrayList();
     }
 
     @SuppressWarnings("unchecked")
@@ -108,13 +114,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLeerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeerActionPerformed
-        Leer panta = new Leer();
+        Leer panta = new Leer(listaElectronicos);
         panta.setVisible(true);
         panta.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnLeerActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-        Crear panta = new Crear();
+        Crear panta = new Crear(listaElectronicos);
         panta.setVisible(true);
         panta.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnCrearActionPerformed
